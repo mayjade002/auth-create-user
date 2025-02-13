@@ -1,74 +1,74 @@
-auth-create-user
+# auth-create-user
 
-Microservicio para la creación de usuarios en el sistema ReservaBnb. Utiliza Node.js con Express y MySQL mediante Sequelize.
+Microservicio para la creación de usuarios en el sistema `ReservaBnb`. Utiliza **Node.js**, **Express** y **MySQL** mediante Sequelize.
 
-🚀 Requisitos previos
+## 🚀 Requisitos previos
 
 Antes de ejecutar este servicio, asegúrate de tener instalado:
 
-Node.js y npm
+- [Node.js](https://nodejs.org/) y [npm](https://www.npmjs.com/)
+- [Docker](https://www.docker.com/) (opcional para ejecución en contenedor)
+- Base de datos **MySQL** configurada
 
-Docker (opcional para ejecución en contenedor)
+## 📦 Instalación
 
-Base de datos MySQL configurada
+1. Clonar el repositorio:
+   ```sh
+   git clone <URL_DEL_REPOSITORIO>
+   cd auth-create-user
+   ```
+2. Instalar dependencias:
+   ```sh
+   npm install
+   ```
+3. Configurar las variables de entorno en un archivo `.env`:
+   ```ini
+   DB_NAME=reservaBnb
+   DB_USER=admin
+   DB_PASS=TuContraseñaSegura
+   DB_HOST=13.216.167.191
+   PORT=5000
+   ```
 
-📦 Instalación
+## 🚀 Uso
 
-Clonar el repositorio:
+1. Iniciar el servidor en modo desarrollo:
+   ```sh
+   npm start
+   ```
+2. Crear un usuario (ejemplo con cURL):
+   ```sh
+   curl -X POST http://localhost:5000/api/users \
+        -H "Content-Type: application/json" \
+        -d '{
+              "nombre": "Nuevo Usuario",
+              "email": "nuevo@email.com",
+              "password": "123456"
+            }'
+   ```
 
-git clone <URL_DEL_REPOSITORIO>
-cd auth-create-user
+## 📦 Ejecución con Docker
 
-Instalar dependencias:
+1. Construir la imagen:
+   ```sh
+   docker build -t auth-create-user .
+   ```
+2. Ejecutar el contenedor:
+   ```sh
+   docker run -p 5000:5000 --env-file .env auth-create-user
+   ```
 
-npm install
+## 📌 Endpoints
 
-Configurar las variables de entorno en un archivo .env:
+- `POST /api/users` → Crea un nuevo usuario.
 
-DB_NAME=reservaBnb
-DB_USER=admin
-DB_PASS=TuContraseñaSegura
-DB_HOST=13.216.167.191
-PORT=5000
+## 🛠 Tecnologías
 
-🚀 Uso
+- **Node.js**
+- **Express**
+- **Sequelize**
+- **MySQL**
 
-Iniciar el servidor en modo desarrollo:
-
-npm start
-
-Crear un usuario (ejemplo con cURL):
-
-curl -X POST http://localhost:5000/users \
-     -H "Content-Type: application/json" \
-     -d '{"name": "John Doe", "email": "john@example.com", "password": "123456"}'
-
-📦 Ejecución con Docker
-
-Construir la imagen:
-
-docker build -t auth-create-user .
-
-Ejecutar el contenedor:
-
-docker run -p 5000:5000 --env-file .env auth-create-user
-
-📌 Endpoints
-
-GET / → Verifica el estado del servidor.
-
-POST /users → Crea un nuevo usuario.
-
-🛠 Tecnologías
-
-Node.js
-
-Express
-
-Sequelize
-
-MySQL
-
-📜 Licencia
+## 📜 Licencia
 
 Este proyecto está bajo la licencia ISC.
